@@ -108,6 +108,32 @@ To use local LLM, comment out `OPENAI_KEY` and instead uncomment `OPENAI_ENDPOIN
 - Set `OPENAI_ENDPOINT` to the address of your local server (eg."http://localhost:1234/v1")
 - Set `OPENAI_MODEL` to the name of the model loaded in your local server.
 
+### Using Google Gemini with Portkey
+
+This project supports using Google Gemini models through Portkey. To set up Gemini:
+
+1. Obtain a Portkey API key from [Portkey's website](https://portkey.ai)
+2. Create a Google Gemini virtual key in your Portkey dashboard
+3. Add the following to your `.env.local` file:
+
+```bash
+PORTKEY_API_KEY="your_portkey_api_key"
+PORTKEY_VIRTUAL_KEY_GOOGLE="your_google_virtual_key"
+```
+
+4. Run the Gemini example to test the integration:
+
+```bash
+npm run gemini-example
+```
+
+The example demonstrates:
+- Basic text completion with Gemini
+- Using different Gemini models (1.5-pro, 1.5-flash)
+- Complex query processing with specific instructions
+
+You can integrate Gemini into your application by importing and using the functions from `src/ai/gemini-provider.ts`.
+
 ### Docker
 
 1. Clone the repository
