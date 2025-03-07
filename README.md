@@ -121,10 +121,10 @@ PORTKEY_API_KEY="your_portkey_api_key"
 PORTKEY_VIRTUAL_KEY_GOOGLE="your_google_virtual_key"
 ```
 
-4. Run the Gemini example to test the integration:
+4. Run the example to test the integration:
 
 ```bash
-npm run gemini-example
+npm run portkey:google
 ```
 
 The example demonstrates:
@@ -132,7 +132,96 @@ The example demonstrates:
 - Using different Gemini models (1.5-pro, 1.5-flash)
 - Complex query processing with specific instructions
 
-You can integrate Gemini into your application by importing and using the functions from `src/ai/gemini-provider.ts`.
+> **Note:** We recommend using the unified Portkey provider (see below) instead of the dedicated providers.
+
+### Using OpenAI with Portkey
+
+This project also supports using OpenAI models through Portkey. To set up OpenAI:
+
+1. Obtain a Portkey API key (if you haven't already)
+2. Create an OpenAI virtual key in your Portkey dashboard
+3. Add the following to your `.env.local` file:
+
+```bash
+PORTKEY_API_KEY="your_portkey_api_key"
+PORTKEY_VIRTUAL_KEY_OPENAI="your_openai_virtual_key"
+```
+
+4. Run the OpenAI example to test the integration:
+
+```bash
+npm run portkey:openai
+```
+
+The example demonstrates:
+- Basic text completion with OpenAI models
+- Function calling capabilities
+- Advanced parameter configuration
+
+> **Note:** We recommend using the unified Portkey provider (see below) instead of the dedicated providers.
+
+### Unified Portkey Provider (Recommended)
+
+This project includes a unified provider that supports multiple AI models through Portkey. This is the recommended approach for using AI models in your project:
+
+- Google Gemini
+- OpenAI
+- Anthropic Claude
+- Groq
+
+To use the unified provider:
+
+1. Set up your Portkey API key and virtual keys for each provider you want to use:
+
+```bash
+PORTKEY_API_KEY="your_portkey_api_key"
+PORTKEY_VIRTUAL_KEY_GOOGLE="your_google_virtual_key"
+PORTKEY_VIRTUAL_KEY_OPENAI="your_openai_virtual_key"
+PORTKEY_VIRTUAL_KEY_ANTHROPIC="your_anthropic_virtual_key" # Optional
+PORTKEY_VIRTUAL_KEY_GROQ="your_groq_virtual_key" # Optional
+```
+
+2. Use the unified Portkey provider in your code:
+
+```typescript
+import { generateCompletion } from './ai/portkey-provider';
+
+// Use Google Gemini
+const geminiResponse = await generateCompletion(
+  'Your prompt here', 
+  'google'
+);
+
+// Use OpenAI
+const openaiResponse = await generateCompletion(
+  'Your prompt here', 
+  'openai'
+);
+```
+
+3. Run the examples to test the integration:
+
+```bash
+# Run all examples (Google and OpenAI)
+npm run portkey
+
+# Run only Google examples
+npm run portkey:google
+
+# Run only OpenAI examples
+npm run portkey:openai
+
+# Run OpenAI function calling example
+npm run portkey:function
+```
+
+### Running All AI Examples
+
+To run examples for both Gemini and OpenAI in sequence:
+
+```bash
+npm run ai-examples
+```
 
 ### Docker
 

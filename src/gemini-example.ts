@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { generateGeminiCompletion } from './ai/gemini-provider';
+import { generateCompletion } from './ai/portkey-provider';
 
 // Load environment variables from .env.local file
 config({ path: '.env.local' });
@@ -16,7 +16,7 @@ async function runGeminiExample() {
         const textPrompt = 'Explain quantum computing in simple terms';
         console.log(`Prompt: "${textPrompt}"`);
         
-        const textResponse = await generateGeminiCompletion(textPrompt);
+        const textResponse = await generateCompletion(textPrompt, 'google');
         console.log('Response:');
         console.log(textResponse.choices[0].message.content);
         
@@ -25,8 +25,9 @@ async function runGeminiExample() {
         const flashPrompt = 'Write a short poem about artificial intelligence';
         console.log(`Prompt: "${flashPrompt}"`);
         
-        const flashResponse = await generateGeminiCompletion(
+        const flashResponse = await generateCompletion(
             flashPrompt, 
+            'google',
             'gemini-1.5-flash', 
             300
         );
@@ -38,7 +39,7 @@ async function runGeminiExample() {
         const complexPrompt = 'Provide 3 practical tips for improving time management skills for remote workers';
         console.log(`Prompt: "${complexPrompt}"`);
         
-        const complexResponse = await generateGeminiCompletion(complexPrompt);
+        const complexResponse = await generateCompletion(complexPrompt, 'google');
         console.log('Response:');
         console.log(complexResponse.choices[0].message.content);
         

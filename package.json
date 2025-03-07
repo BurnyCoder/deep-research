@@ -5,7 +5,13 @@
   "scripts": {
     "start": "tsx --env-file=.env.local src/run.ts",
     "docker": "tsx src/run.ts",
-    "gemini-example": "tsx --env-file=.env.local src/gemini-example.ts"
+    "gemini-example": "tsx --env-file=.env.local src/gemini-example.ts",
+    "openai-example": "tsx --env-file=.env.local src/ai-examples.ts openai",
+    "ai-examples": "tsx --env-file=.env.local src/ai-examples.ts",
+    "portkey": "tsx --env-file=.env.local src/portkey-examples.ts",
+    "portkey:google": "tsx --env-file=.env.local src/portkey-examples.ts google",
+    "portkey:openai": "tsx --env-file=.env.local src/portkey-examples.ts openai",
+    "portkey:function": "tsx --env-file=.env.local src/portkey-examples.ts openai function"
   },
   "author": "",
   "license": "ISC", 
